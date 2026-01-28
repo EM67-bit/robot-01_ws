@@ -21,3 +21,17 @@ Simple differential drive robot controlled via joystick over WiFi.
 - Motors → Pi GPIO (PWM + DIR pins – see motor_driver.py)
 
 Work in progress 🚧
+
+## Firmware (ESP32 side)
+
+Located in `firmware/esp32_joystick_sender/`
+
+- Reads analog joystick (X=GPIO3, Y=GPIO4)
+- Sends JSON UDP packets to Pi IP:port 3333
+- Arduino IDE sketch: `esp32_joystick_sender.ino`
+
+### Upload instructions
+1. Open in Arduino IDE
+2. Select board: Lolin C3 Mini (or ESP32-C3 Dev Module)
+3. Set partition scheme, upload speed, etc.
+4. Upload!
