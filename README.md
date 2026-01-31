@@ -37,20 +37,20 @@ Located in `firmware/esp32_joystick_sender/`
 4. Upload!
 
 
-### Robot-01 Stable Camera Streamer  
+## Robot-01 Stable Camera Streamer  
 
 Optimized for Raspberry Pi 3B on Ubuntu 24.04 (Noble Numbat)  
 This repository contains a high-stability MJPEG streaming server. It is specifically designed to bypass the buggy libcamera assertions found in Ubuntu 24.04 when running on older Raspberry Pi 3 hardware.
 
-⚙️ Phase 1: Hardware & Firmware Configuration  
+### ⚙️ Phase 1: Hardware & Firmware Configuration  
 You must perform these steps first. The modern Ubuntu camera stack is unstable on Pi 3B; these steps switch the Pi to the "Legacy" driver which is rock-solid.
 
-Open the boot configuration file:  
+#### Open the boot configuration file:  
 
 sudo nano /boot/firmware/config.txt  
 
 
-Locate and modify these specific lines (or add them to the bottom):  
+#### Locate and modify these specific lines (or add them to the bottom):  
 
 camera_auto_detect=0  
 dtoverlay=vc4-fkms-v3d  
@@ -58,24 +58,24 @@ start_x=1
 gpu_mem=128  
 Save (Ctrl+O, Enter) and Exit (Ctrl+X).  
 
-Reboot the system:  
+#### Reboot the system:  
 
 sudo reboot  
 
 
-📦 Phase 2: Dependencies & Libraries  
+### 📦 Phase 2: Dependencies & Libraries  
 Ubuntu 24.04 requires specific system-level libraries for Python to access the camera hardware without crashing.  
 
 Run the following commands in order:  
 
-# Update the package lists  
+#### Update the package lists  
 sudo apt update  
 
-# Install OpenCV (The engine that captures the video)  
+#### Install OpenCV (The engine that captures the video)  
 sudo apt install python3-opencv -y  
 
-# Install Flask (The web server)  
+#### Install Flask (The web server)  
 sudo apt install python3-flask -y  
 
-# Install Video4Linux tools (To manage the camera device)  
+#### Install Video4Linux tools (To manage the camera device)  
 sudo apt install v4l-utils -y  
